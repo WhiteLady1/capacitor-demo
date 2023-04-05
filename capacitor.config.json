@@ -1,0 +1,6 @@
+{
+  "appId": "com.todoappblanka.com",
+  "appName": "to-do-app",
+  "webDir": "build",
+  "bundledWebRuntime": false
+}
