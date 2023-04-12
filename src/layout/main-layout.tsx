@@ -75,6 +75,7 @@ export const MainLayout: React.FC<MainLayoutData> = ({
           color="secondary"
           css={{ minWidth: "unset" }}
         >
+          {/* New task */}
           <Image src={PlusIcon} />
         </Button>
       </div>

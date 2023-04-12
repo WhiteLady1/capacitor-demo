@@ -32,6 +32,16 @@ You can sync your web application to your native project by running the followin
 
 Command will copy your built web application, by default www, to your native project and install the native projects dependencies.
 
+## Testing Capacitor app
+
+### `npx cap run ios`
+
+To run a debug build of your Capacitor app on an iOS device.
+
+### `npx cap run android`
+
+To run a debug build of your Capacitor app on an Android device.
+
 ## Learn More
 
 You can learn more in the [https://capacitorjs.com/] about Capacitor.js
