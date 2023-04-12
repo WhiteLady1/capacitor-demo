@@ -19,17 +19,6 @@ export const MainLayout: React.FC<MainLayoutData> = ({
 }) => {
   const [categoriColor, setCategoriColor] = React.useState<number>(0);
   const [data, setData] = React.useState([...mainData]);
-  const [toDoData, setToDoData] = React.useState([...data[0].toDoList]);
-
-  const changeFilter = (id: string, index: number) => {
-    setCategoriColor(index);
-
-    console.log('před', toDoData);
-    setToDoData([...data[1].toDoList]);
-    console.log('Po', toDoData)
-
-    console.log('co to vrací', data.find(list => list.id === id)?.toDoList || [])
-  };
 
   const updateData = (id: string) => {
     console.log('update task with id:', id);
@@ -82,7 +71,7 @@ export const MainLayout: React.FC<MainLayoutData> = ({
               name={card.name}
               done={getCountOfDoneTasks(card.toDoList)}
               cardColor={index}
-              onSelect={(number) => changeFilter(card.id, number)}
+              onSelect={(number) => setCategoriColor(number)}
             />
           ))}
         </div>
@@ -90,7 +79,7 @@ export const MainLayout: React.FC<MainLayoutData> = ({
       <section className='main-layout__tasks'>
         <Text css={{ textTransform: "uppercase", fontSize: "12px", marginBottom: "10px" }}>Your tasks</Text>
         <ToDoList
-          toDoListData={toDoData}
+          toDoListData={data[categoriColor].toDoList}
           toDoColors={categoriColor}
           onChange={(id) => updateData(id)}
         />

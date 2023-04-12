@@ -14,19 +14,13 @@ export const ToDoList: React.FC<ToDoListData> = ({
   toDoColors,
   onChange,
 }) => {
-  const [data, setData] = React.useState([...toDoListData]);
-
   const setSelected = (id: string) => {
-    setData(prevValue => prevValue.map(item => item.id === id ? {
-      ...item,
-      done: !item.done,
-    } : item));
     onChange(id);
   };
 
   return (
     <ul className="to-do-list" style={{ margin: 0 }}>
-      {data.map(listItem => (
+      {toDoListData.map(listItem => (
         <Card
           key={listItem.id}
           variant="bordered"
