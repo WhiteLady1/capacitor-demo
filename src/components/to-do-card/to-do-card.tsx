@@ -27,7 +27,7 @@ export const ToDoCard: React.FC<ToDoCardProps> = ({
       variant='flat'
       isHoverable
       isPressable
-      css={{ width: '150px', backgroundColor: `${CARD_COLORS[cardColor]}` }}
+      css={{ width: '150px', backgroundColor: `${CARD_COLORS[cardColor]}`, marginLeft: "15px" }}
       onClick={handleClick}
     >
       <Card.Header

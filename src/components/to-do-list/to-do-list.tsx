@@ -6,19 +6,22 @@ import './to-do-list.css';
 interface ToDoListData {
   toDoListData: ToDoListInerface [];
   toDoColors: number;
+  onChange: (id: string) => void;
 };
 
 export const ToDoList: React.FC<ToDoListData> = ({
   toDoListData,
   toDoColors,
+  onChange,
 }) => {
   const [data, setData] = React.useState([...toDoListData]);
 
   const setSelected = (id: string) => {
-    setData(prewValue => prewValue.map(item => item.id === id ? {
+    setData(prevValue => prevValue.map(item => item.id === id ? {
       ...item,
       done: !item.done,
     } : item));
+    onChange(id);
   };
 
   return (
@@ -30,6 +33,7 @@ export const ToDoList: React.FC<ToDoListData> = ({
           isHoverable
           isPressable
           onPressEnd={() => setSelected(listItem.id)}
+          css={{ marginBottom: "15px"}}
         >
           <Card.Body css={{ padding:'$5' }}>
             <li className="to-do-list__item" style={{ marginBottom: 0 }}>

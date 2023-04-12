@@ -3,12 +3,12 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
-  gap: 15px;
 }
 
 .main-layout__categories,
 .main-layout__tasks {
   padding: 0 15px;
+  margin-bottom: 15px;
 }
 
 .main-layout__user {
@@ -17,6 +17,7 @@
   align-items: center;
   padding: 20px 15px;
   background-color: #9DD4CF;
+  margin-bottom: 15px;
 }
 
 .main-layout__user__icons {
@@ -27,7 +28,6 @@
 
 .main-layout__categories__wrapper {
   display: flex;
-  gap: 15px;
 }
 
 .main-layout__tasks {

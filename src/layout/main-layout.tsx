@@ -7,6 +7,7 @@ import ProfilePhoto from '../img/profile.JPEG';
 import NotificationIcon from '../img/notification.svg';
 import SearchIcon from '../img/search.svg';
 import PlusIcon from '../img/plus.svg';
+
 import './main-layout.css'
 
 interface MainLayoutData {
@@ -17,6 +18,29 @@ export const MainLayout: React.FC<MainLayoutData> = ({
   mainData
 }) => {
   const [categoriColor, setCategoriColor] = React.useState<number>(0);
+  const [data, setData] = React.useState([...mainData]);
+  const [toDoData, setToDoData] = React.useState([...data[0].toDoList]);
+
+  const changeFilter = (id: string, index: number) => {
+    setCategoriColor(index);
+
+    console.log('před', toDoData);
+    setToDoData([...data[1].toDoList]);
+    console.log('Po', toDoData)
+
+    console.log('co to vrací', data.find(list => list.id === id)?.toDoList || [])
+  };
+
+  const updateData = (id: string) => {
+    console.log('update task with id:', id);
+    setData(prevValue => prevValue.map(list => ({
+      ...list,
+      toDoList: list.toDoList.map(item => item.id === id ? {
+        ...item,
+        done: !item.done,
+      } : item)
+    })));
+  };
 
   const getCountOfDoneTasks = (items: ToDoListInerface[]) => {
     const length = items.length;
@@ -51,14 +75,14 @@ export const MainLayout: React.FC<MainLayoutData> = ({
       <section className='main-layout__categories'>
         <Text css={{ textTransform: "uppercase", fontSize: "12px", marginBottom: "10px" }}>Categories</Text>
         <div className='main-layout__categories__wrapper'>
-          {mainData.map((card, index) => (
+          {data.map((card, index) => (
             <ToDoCard
               key={card.id}
               count={card.toDoList.length}
               name={card.name}
               done={getCountOfDoneTasks(card.toDoList)}
               cardColor={index}
-              onSelect={() => setCategoriColor(index)}
+              onSelect={(number) => changeFilter(card.id, number)}
             />
           ))}
         </div>
@@ -66,8 +90,9 @@ export const MainLayout: React.FC<MainLayoutData> = ({
       <section className='main-layout__tasks'>
         <Text css={{ textTransform: "uppercase", fontSize: "12px", marginBottom: "10px" }}>Your tasks</Text>
         <ToDoList
-          toDoListData={mainData[categoriColor].toDoList}
+          toDoListData={toDoData}
           toDoColors={categoriColor}
+          onChange={(id) => updateData(id)}
         />
       </section>
       <div className='main-layout__add-button'>
@@ -75,7 +100,6 @@ export const MainLayout: React.FC<MainLayoutData> = ({
           color="secondary"
           css={{ minWidth: "unset" }}
         >
-          {/* New task */}
           <Image src={PlusIcon} />
         </Button>
       </div>

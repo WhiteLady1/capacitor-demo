@@ -1,7 +1,6 @@
 .to-do-list {
   display: flex;
   flex-direction: column;
-  gap: 10px;
 };
 
 .to-do-list__item {
