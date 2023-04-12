@@ -1,0 +1,13 @@
+.to-do-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+};
+
+.to-do-list__item {
+  margin-bottom: 0;
+}
+
+.to-do-list__item span {
+  font-size: 18px;
+}

@@ -1,0 +1,41 @@
+.main-layout {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.main-layout__categories,
+.main-layout__tasks {
+  padding: 0 15px;
+}
+
+.main-layout__user {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 15px;
+  background-color: #9DD4CF;
+}
+
+.main-layout__user__icons {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 10px;
+}
+
+.main-layout__categories__wrapper {
+  display: flex;
+  gap: 15px;
+}
+
+.main-layout__tasks {
+  margin-top: 20px;
+}
+
+.main-layout__add-button {
+  position: fixed;
+  bottom: 30px;
+  right: 15px;
+}
