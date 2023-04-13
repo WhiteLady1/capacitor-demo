@@ -29,7 +29,7 @@ export const ToDoList: React.FC<ToDoListData> = ({
           onPressEnd={() => setSelected(listItem.id)}
           css={{ marginBottom: "15px"}}
         >
-          <Card.Body css={{ padding:'$5' }}>
+          <Card.Body css={{ padding:"$5" }}>
             <li className="to-do-list__item" style={{ marginBottom: 0 }}>
               <Checkbox
                 color={toDoColors === 0 ? "warning" : "primary"}

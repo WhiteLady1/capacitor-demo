@@ -24,25 +24,25 @@ export const ToDoCard: React.FC<ToDoCardProps> = ({
 
   return (
     <Card
-      variant='flat'
+      variant="flat"
       isHoverable
       isPressable
-      css={{ width: '150px', backgroundColor: `${CARD_COLORS[cardColor]}`, marginLeft: "15px" }}
+      css={{ width: "150px", backgroundColor: `${CARD_COLORS[cardColor]}`, marginLeft: "15px" }}
       onClick={handleClick}
     >
       <Card.Header
         css={{
-            paddingBottom: '$0',
+            paddingBottom: "$0",
           }}
       >
-        <Text size='$xs'>{count} tasks</Text>
+        <Text size="$xs">{count} tasks</Text>
       </Card.Header>
-      <Card.Body css={{ py: '$0' }}>
+      <Card.Body css={{ py: "$0" }}>
         <Text size="$lg">{name}</Text>
       </Card.Body>
       <Card.Footer>
         <Progress
-          size='xs'
+          size="xs"
           color={cardColor === 0 ? "warning" : "primary"}
           value={done}
           css={{ background: "$background"}}

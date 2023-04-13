@@ -1,5 +1,5 @@
 import React from 'react';
-import { ToDoCard, ToDoList } from '../components';
+import { NewTask, ToDoCard, ToDoList } from '../components';
 import { Button, Image, Text, User } from '@nextui-org/react';
 import { DataInterface, ToDoListInerface } from '../source/data';
 
@@ -18,7 +18,13 @@ export const MainLayout: React.FC<MainLayoutData> = ({
   mainData
 }) => {
   const [categoriColor, setCategoriColor] = React.useState<number>(0);
+  const [addTask, setAddTask] = React.useState<boolean>(false);
   const [data, setData] = React.useState([...mainData]);
+
+  const addNewTask = (text: string) => {
+    console.log(text);
+    setAddTask(!addTask);
+  };
 
   const updateData = (id: string) => {
     console.log('update task with id:', id);
@@ -41,16 +47,16 @@ export const MainLayout: React.FC<MainLayoutData> = ({
   };
 
   return (
-    <div className='main-layout'>
-      <section className='main-layout__user'>
+    <div className="main-layout">
+      <section className="main-layout__user">
         <User
           src={ProfilePhoto}
-          name='Blanka S.'
-          css={{ paddingLeft: '$0'}}
+          name="Blanka S."
+          css={{ paddingLeft: "$0"}}
           color="success"
           bordered
         />
-        <div className='main-layout__user__icons'>
+        <div className="main-layout__user__icons">
           <Image
             width={25}
             src={NotificationIcon}
@@ -61,9 +67,9 @@ export const MainLayout: React.FC<MainLayoutData> = ({
           />
         </div>
       </section>
-      <section className='main-layout__categories'>
+      <section className="main-layout__categories">
         <Text css={{ textTransform: "uppercase", fontSize: "12px", marginBottom: "10px" }}>Categories</Text>
-        <div className='main-layout__categories__wrapper'>
+        <div className="main-layout__categories__wrapper">
           {data.map((card, index) => (
             <ToDoCard
               key={card.id}
@@ -76,7 +82,7 @@ export const MainLayout: React.FC<MainLayoutData> = ({
           ))}
         </div>
       </section>
-      <section className='main-layout__tasks'>
+      <section className="main-layout__tasks">
         <Text css={{ textTransform: "uppercase", fontSize: "12px", marginBottom: "10px" }}>Your tasks</Text>
         <ToDoList
           toDoListData={data[categoriColor].toDoList}
@@ -84,10 +90,11 @@ export const MainLayout: React.FC<MainLayoutData> = ({
           onChange={(id) => updateData(id)}
         />
       </section>
-      <div className='main-layout__add-button'>
+      <div className="main-layout__add-button">
         <Button
           color="secondary"
           css={{ minWidth: "unset" }}
+          onPress={() => setAddTask(!addTask)}
         >
           <Image src={PlusIcon} />
         </Button>
