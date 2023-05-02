@@ -1,5 +1,5 @@
 import React from 'react';
-import { NewTask, ToDoCard, ToDoList } from '../components';
+import { ToDoCard, ToDoList } from '../components';
 import { Button, Image, Text, User } from '@nextui-org/react';
 import { DataInterface, ToDoListInerface } from '../source/data';
 
